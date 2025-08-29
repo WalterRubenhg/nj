@@ -54,75 +54,76 @@ h1 { color:#2c3e50; margin:20px; }
 </div>
 
 <script>
-let canciones=[], listaFiltrada=[];
-const URL_JSON="canciones.json";
-
-// Cargar JSON y manejar versión
-fetch(URL_JSON)
-.then(res=>res.json())
-.then(data=>{
-  const localVersion=parseInt(localStorage.getItem("version"))||0;
-  if(data.version>localVersion){
-    canciones=data.canciones;
-    localStorage.setItem("canciones", JSON.stringify(data.canciones));
-    localStorage.setItem("version", data.version);
-  } else {
+  let canciones=[], listaFiltrada=[];
+  const URL_JSON="canciones.json?nocache=" + Date.now();
+  
+  // Cargar JSON y manejar versión
+  fetch(URL_JSON)
+  .then(res=>res.json())
+  .then(data=>{
+    const localVersion=parseInt(localStorage.getItem("version"))||0;
+    if(data.version>localVersion){
+      canciones=data.canciones;
+      localStorage.setItem("canciones", JSON.stringify(data.canciones));
+      localStorage.setItem("version", data.version);
+    } else {
+      let guardadas=localStorage.getItem("canciones");
+      canciones=guardadas?JSON.parse(guardadas):data.canciones;
+    }
+    actualizarLista();
+  })
+  .catch(()=>{
     let guardadas=localStorage.getItem("canciones");
-    canciones=guardadas?JSON.parse(guardadas):data.canciones;
-  }
-  actualizarLista();
-})
-.catch(()=>{
-  let guardadas=localStorage.getItem("canciones");
-  canciones=guardadas?JSON.parse(guardadas):[];
-  actualizarLista();
-});
-
-function actualizarLista(){
-  const texto=document.getElementById("buscador").value.toLowerCase();
-  listaFiltrada=canciones.filter(c=>c.titulo.toLowerCase().includes(texto)||c.letra.toLowerCase().includes(texto));
-  listaFiltrada.sort((a,b)=>a.titulo.localeCompare(b.titulo));
-  const cont=document.getElementById("lista");
-  cont.innerHTML="";
-  listaFiltrada.forEach(c=>{
-    const div=document.createElement("div");
-    div.className="cancion";
-    div.innerHTML=`<div class="titulo">${c.titulo}</div>`;
-    div.onclick=()=>mostrarDetalle(c);
-    cont.appendChild(div);
+    canciones=guardadas?JSON.parse(guardadas):[];
+    actualizarLista();
   });
-}
-
-function mostrarDetalle(c){
-  document.getElementById("lista").style.display="none";
-  document.getElementById("buscador").style.display="none";
-  document.getElementById("detalle").style.display="block";
-  document.getElementById("tituloCancion").textContent=c.titulo;
-
-  // Mostrar la letra respetando saltos de línea y espacios
-  document.getElementById("letraCancion").textContent=c.letra;
-
-  const modal=document.getElementById("modal");
-  const iframe=document.getElementById("iframeModal");
-  const close=document.getElementsByClassName("close")[0];
-
-  document.getElementById("btnTeclado").onclick=()=>{iframe.src=c.tutorial.teclado; modal.style.display="block";};
-  document.getElementById("btnBateria").onclick=()=>{iframe.src=c.tutorial.bateria; modal.style.display="block";};
-  document.getElementById("btnGuitarra").onclick=()=>{iframe.src=c.tutorial.guitarra; modal.style.display="block";};
-  document.getElementById("btnMusica").onclick=()=>{iframe.src=c.audio; modal.style.display="block";};
-
-  close.onclick=()=>{iframe.src=""; modal.style.display="none";};
-  window.onclick=(event)=>{if(event.target==modal){iframe.src=""; modal.style.display="none";}};
-}
-
-document.getElementById("volver").onclick=()=>{
-  document.getElementById("detalle").style.display="none";
-  document.getElementById("lista").style.display="block";
-  document.getElementById("buscador").style.display="inline-block";
-}
-
-document.getElementById("buscador").addEventListener("input", actualizarLista);
-</script>
+  
+  function actualizarLista(){
+    const texto=document.getElementById("buscador").value.toLowerCase();
+    listaFiltrada=canciones.filter(c=>c.titulo.toLowerCase().includes(texto)||c.letra.toLowerCase().includes(texto));
+    listaFiltrada.sort((a,b)=>a.titulo.localeCompare(b.titulo));
+    const cont=document.getElementById("lista");
+    cont.innerHTML="";
+    listaFiltrada.forEach(c=>{
+      const div=document.createElement("div");
+      div.className="cancion";
+      div.innerHTML=`<div class="titulo">${c.titulo}</div>`;
+      div.onclick=()=>mostrarDetalle(c);
+      cont.appendChild(div);
+    });
+  }
+  
+  function mostrarDetalle(c){
+    document.getElementById("lista").style.display="none";
+    document.getElementById("buscador").style.display="none";
+    document.getElementById("detalle").style.display="block";
+    document.getElementById("tituloCancion").textContent=c.titulo;
+  
+    // Mostrar la letra respetando saltos de línea y espacios
+    document.getElementById("letraCancion").textContent=c.letra;
+  
+    const modal=document.getElementById("modal");
+    const iframe=document.getElementById("iframeModal");
+    const close=document.getElementsByClassName("close")[0];
+  
+    document.getElementById("btnTeclado").onclick=()=>{iframe.src=c.tutorial.teclado; modal.style.display="block";};
+    document.getElementById("btnBateria").onclick=()=>{iframe.src=c.tutorial.bateria; modal.style.display="block";};
+    document.getElementById("btnGuitarra").onclick=()=>{iframe.src=c.tutorial.guitarra; modal.style.display="block";};
+    document.getElementById("btnMusica").onclick=()=>{iframe.src=c.audio; modal.style.display="block";};
+  
+    close.onclick=()=>{iframe.src=""; modal.style.display="none";};
+    window.onclick=(event)=>{if(event.target==modal){iframe.src=""; modal.style.display="none";}};
+  }
+  
+  document.getElementById("volver").onclick=()=>{
+    document.getElementById("detalle").style.display="none";
+    document.getElementById("lista").style.display="block";
+    document.getElementById("buscador").style.display="inline-block";
+  }
+  
+  document.getElementById("buscador").addEventListener("input", actualizarLista);
+  </script>
+  
 
 </body>
 </html>
