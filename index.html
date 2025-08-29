@@ -55,7 +55,9 @@ h1 { color:#2c3e50; margin:20px; }
 
 <script>
   let canciones=[], listaFiltrada=[];
-  const URL_JSON="https://walterrubenhg.github.io/nj/canciones.json?nocache=" + Date.now();
+  
+  // ✅ URL de jsDelivr con nocache
+  const URL_JSON = "https://cdn.jsdelivr.net/gh/walterrubenhg/nj/canciones.json?nocache=" + Date.now();
   
   // Cargar JSON y manejar versión
   fetch(URL_JSON)
@@ -98,8 +100,6 @@ h1 { color:#2c3e50; margin:20px; }
     document.getElementById("buscador").style.display="none";
     document.getElementById("detalle").style.display="block";
     document.getElementById("tituloCancion").textContent=c.titulo;
-  
-    // Mostrar la letra respetando saltos de línea y espacios
     document.getElementById("letraCancion").textContent=c.letra;
   
     const modal=document.getElementById("modal");
@@ -123,6 +123,7 @@ h1 { color:#2c3e50; margin:20px; }
   
   document.getElementById("buscador").addEventListener("input", actualizarLista);
   </script>
+  
   
 
 </body>
