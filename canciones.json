@@ -1,0 +1,96 @@
+{
+  "version": 21,
+  "canciones": [
+    {
+      "titulo": "Somos el pueblo de Dios",
+      "letra": "Somos el pueblo de Dios
+      Somos un pueblo especial
+      Llamados para anunciar
+      Las virtudes de Aquél
+      Que nos llamó a su luz, 
+      
+      Somos el pueblo de Dios
+      Su sangre nos redimió
+      Y su espíritu dio
+      Para darnos poder
+      Y ser testigos de Él
+
+      Y llevaremos su gloria
+      A cada pueblo y nación
+      Trayéndoles esperanza
+      Y nuevas de salvación
+
+      Y su amor nos impulsa
+      No nos podemos callar (no nos podemos callar)
+      Anunciaremos al mundo
+      De su amor y verdad, aleluya
+      Oh-oh
+
+      Jorge Lozano
+      Somos el pueblo de Dios
+      Somos un pueblo especial
+      Llamados para anunciar
+      Las virtudes de Aquél
+      Que nos llamó a su luz 
+      (Marco)
+
+      Somos el pueblo de Dios (sí)
+      Su sangre nos redimió
+      Y su espíritu dio
+      Para darnos poder
+      Y ser testigos de Él 
+      (Danilo Montero)
+
+      Y llevaremos su gloria
+      A cada pueblo y nación
+      Trayéndoles esperanza
+      Y nuevas de salvación
+      Y su amor nos impulsa
+
+      No nos podemos callar (no nos podemos callar)
+      Anunciaremos al mundo
+      De su amor y verdad
+      ¿Alguien puede decir amén?
+      Somos el pueblo de Dios (somos el pueblo)
+      Somos un pueblo especial (muy especial)
+      Llamados para anunciar
+      Las virtudes de Aquel
+      Que nos llamó a su luz
+      Somos el pueblo de Dios
+      Su sangre nos redimió
+      Y su espíritu dio
+      Para darnos poder
+      Y ser testigos de Él
+      Canten con nosotros, llevaremos
+      Y llevaremos su gloria
+      A cada pueblo y nación
+      Trayéndoles esperanza
+      Y nuevas de salvación
+      Y su amor nos impulsa
+      No nos podemos callar (no nos podemos callar)
+      Anunciaremos al mundo
+      De su amor y verdad
+      Sí, Señor, anunciaremos
+      Tu amor y tu verdad
+      Amén",
+      "tutorial": {
+        "teclado": "https://www.youtube.com/embed/GCnyax1nCPc",
+        "bateria": "https://www.youtube.com/embed/GCnyax1nCPc",
+        "guitarra": "https://www.youtube.com/embed/GCnyax1nCPc"
+      },
+      "audio": "https://www.youtube.com/embed/GCnyax1nCPc"
+    },
+    {
+      "titulo": "Cristo vive en mí",
+      "letra": "Ya no vivo yo,\nmas Cristo vive en mí,\nmi vida es su luz.",
+      "tutorial": {
+        "teclado": "https://www.youtube.com/embed/VIDEO_TECLADO2",
+        "bateria": "https://www.youtube.com/embed/VIDEO_BATERIA2",
+        "guitarra": "https://www.youtube.com/embed/VIDEO_GUITARRA2"
+      },
+      "audio": "https://www.youtube.com/embed/VIDEO_CANCION2"
+    }
+  ]
+}
+
+
