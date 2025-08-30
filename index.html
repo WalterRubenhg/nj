@@ -62,21 +62,14 @@ const URL_JSON = "https://cdn.jsdelivr.net/gh/walterrubenhg/nj/canciones.json?no
 fetch(URL_JSON)
 .then(res => res.json())
 .then(data => {
-    const localVersion = parseInt(localStorage.getItem("version")) || 0;
-
-    // Actualizar si la versión cambió o si no hay canciones guardadas
-    if (data.version > localVersion || !localStorage.getItem("canciones")) {
-        canciones = data.canciones;
-        localStorage.setItem("canciones", JSON.stringify(data.canciones));
-        localStorage.setItem("version", data.version);
-    } else {
-        // Aunque la versión no cambió, refresca desde el nocache para cambios menores
-        canciones = data.canciones;
-    }
-
+    // Reemplaza siempre el localStorage con el JSON más reciente
+    canciones = data.canciones;
+    localStorage.setItem("canciones", JSON.stringify(data.canciones));
+    localStorage.setItem("version", data.version); // opcional
     actualizarLista();
 })
 .catch(() => {
+    // Si falla, carga lo guardado
     let guardadas = localStorage.getItem("canciones");
     canciones = guardadas ? JSON.parse(guardadas) : [];
     actualizarLista();
@@ -128,3 +121,4 @@ document.getElementById("buscador").addEventListener("input", actualizarLista);
 
 </body>
 </html>
+
